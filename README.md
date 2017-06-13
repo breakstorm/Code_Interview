@@ -1,24 +1,20 @@
-**Table of Contents**
+# **Table of Contents**
 
-- [체크리스트](#%EC%B2%B4%ED%81%AC%EB%A6%AC%EC%8A%A4%ED%8A%B8)
-    - [자바스크립트 scope를 var키워드를 기준으로 설명할수 있다.](#%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-scope%EB%A5%BC-var%ED%82%A4%EC%9B%8C%EB%93%9C%EB%A5%BC-%EA%B8%B0%EC%A4%80%EC%9C%BC%EB%A1%9C-%EC%84%A4%EB%AA%85%ED%95%A0%EC%88%98-%EC%9E%88%EB%8B%A4)
-        - [[예제 1] 함수 단위의 유효 범위](#%EC%98%88%EC%A0%9C-1-%ED%95%A8%EC%88%98-%EB%8B%A8%EC%9C%84%EC%9D%98-%EC%9C%A0%ED%9A%A8-%EB%B2%94%EC%9C%84)
-        - [[예제 2] 변수명의 중복 허용](#%EC%98%88%EC%A0%9C-2-%EB%B3%80%EC%88%98%EB%AA%85%EC%9D%98-%EC%A4%91%EB%B3%B5-%ED%97%88%EC%9A%A9)
-        - [[예제 3] var 키워드의 생략](#%EC%98%88%EC%A0%9C-3-var-%ED%82%A4%EC%9B%8C%EB%93%9C%EC%9D%98-%EC%83%9D%EB%9E%B5)
-        - [[예제 4] 렉시컬 특성](#%EC%98%88%EC%A0%9C-4-%EB%A0%89%EC%8B%9C%EC%BB%AC-%ED%8A%B9%EC%84%B1)
-    - [closure 는 언제 형성되는지? 경험한 코드가 있으면 코드로 보여주기.](#closure-%EB%8A%94-%EC%96%B8%EC%A0%9C-%ED%98%95%EC%84%B1%EB%90%98%EB%8A%94%EC%A7%80-%EA%B2%BD%ED%97%98%ED%95%9C-%EC%BD%94%EB%93%9C%EA%B0%80-%EC%9E%88%EC%9C%BC%EB%A9%B4-%EC%BD%94%EB%93%9C%EB%A1%9C-%EB%B3%B4%EC%97%AC%EC%A3%BC%EA%B8%B0)
-        - [[예제 1] 내부 변수 참조 값 접근](#%EC%98%88%EC%A0%9C-1-%EB%82%B4%EB%B6%80-%EB%B3%80%EC%88%98-%EC%B0%B8%EC%A1%B0-%EA%B0%92-%EC%A0%91%EA%B7%BC)
-        - [[예제 2] 다른 객체로 내부 변수 참조](#%EC%98%88%EC%A0%9C-2-%EB%8B%A4%EB%A5%B8-%EA%B0%9D%EC%B2%B4%EB%A1%9C-%EB%82%B4%EB%B6%80-%EB%B3%80%EC%88%98-%EC%B0%B8%EC%A1%B0)
-        - [클로저의 사용이유](#%ED%81%B4%EB%A1%9C%EC%A0%80%EC%9D%98-%EC%82%AC%EC%9A%A9%EC%9D%B4%EC%9C%A0)
-    - [const는 언제 사용해야 하는지?](#const%EB%8A%94-%EC%96%B8%EC%A0%9C-%EC%82%AC%EC%9A%A9%ED%95%B4%EC%95%BC-%ED%95%98%EB%8A%94%EC%A7%80)
-        - [let](#let)
-        - [const](#const)
-    - [mvc방식으로 개발한 사례가 있다면 본인이 느끼는 장단점을 설명하기.](#mvc%EB%B0%A9%EC%8B%9D%EC%9C%BC%EB%A1%9C-%EA%B0%9C%EB%B0%9C%ED%95%9C-%EC%82%AC%EB%A1%80%EA%B0%80-%EC%9E%88%EB%8B%A4%EB%A9%B4-%EB%B3%B8%EC%9D%B8%EC%9D%B4-%EB%8A%90%EB%81%BC%EB%8A%94-%EC%9E%A5%EB%8B%A8%EC%A0%90%EC%9D%84-%EC%84%A4%EB%AA%85%ED%95%98%EA%B8%B0)
-    - [크롬개발자도구에서 js디버깅을 하는 방식을 설명해보기.](#%ED%81%AC%EB%A1%AC%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%8F%84%EA%B5%AC%EC%97%90%EC%84%9C-js%EB%94%94%EB%B2%84%EA%B9%85%EC%9D%84-%ED%95%98%EB%8A%94-%EB%B0%A9%EC%8B%9D%EC%9D%84-%EC%84%A4%EB%AA%85%ED%95%B4%EB%B3%B4%EA%B8%B0)
-    - [비동기 콜백함수와 스택간의 관계를 어떻게 설명할 수 있는지?](#%EB%B9%84%EB%8F%99%EA%B8%B0-%EC%BD%9C%EB%B0%B1%ED%95%A8%EC%88%98%EC%99%80-%EC%8A%A4%ED%83%9D%EA%B0%84%EC%9D%98-%EA%B4%80%EA%B3%84%EB%A5%BC-%EC%96%B4%EB%96%BB%EA%B2%8C-%EC%84%A4%EB%AA%85%ED%95%A0-%EC%88%98-%EC%9E%88%EB%8A%94%EC%A7%80)
-    - [DOM 조작과정에서 성능에 좋지 않은 방식과 좋은 사례는 어떤 것들이 있는지?](#dom-%EC%A1%B0%EC%9E%91%EA%B3%BC%EC%A0%95%EC%97%90%EC%84%9C-%EC%84%B1%EB%8A%A5%EC%97%90-%EC%A2%8B%EC%A7%80-%EC%95%8A%EC%9D%80-%EB%B0%A9%EC%8B%9D%EA%B3%BC-%EC%A2%8B%EC%9D%80-%EC%82%AC%EB%A1%80%EB%8A%94-%EC%96%B4%EB%96%A4-%EA%B2%83%EB%93%A4%EC%9D%B4-%EC%9E%88%EB%8A%94%EC%A7%80)
-        - [좋지 않은 예](#%EC%A2%8B%EC%A7%80-%EC%95%8A%EC%9D%80-%EC%98%88)
-        - [좋은 예](#%EC%A2%8B%EC%9D%80-%EC%98%88)
+- 체크리스트
+    - [ ] [자바스크립트 scope를 var키워드를 기준으로 설명할수 있다.](#%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-scope%EB%A5%BC-var%ED%82%A4%EC%9B%8C%EB%93%9C%EB%A5%BC-%EA%B8%B0%EC%A4%80%EC%9C%BC%EB%A1%9C-%EC%84%A4%EB%AA%85%ED%95%A0%EC%88%98-%EC%9E%88%EB%8B%A4)
+    
+    - [ ] [closure 는 언제 형성되는지? 경험한 코드가 있으면 코드로 보여주기.](#closure-%EB%8A%94-%EC%96%B8%EC%A0%9C-%ED%98%95%EC%84%B1%EB%90%98%EB%8A%94%EC%A7%80-%EA%B2%BD%ED%97%98%ED%95%9C-%EC%BD%94%EB%93%9C%EA%B0%80-%EC%9E%88%EC%9C%BC%EB%A9%B4-%EC%BD%94%EB%93%9C%EB%A1%9C-%EB%B3%B4%EC%97%AC%EC%A3%BC%EA%B8%B0)
+        
+    - [ ] [const는 언제 사용해야 하는지?](#const%EB%8A%94-%EC%96%B8%EC%A0%9C-%EC%82%AC%EC%9A%A9%ED%95%B4%EC%95%BC-%ED%95%98%EB%8A%94%EC%A7%80)
+        
+    - [ ] [mvc방식으로 개발한 사례가 있다면 본인이 느끼는 장단점을 설명하기.](#mvc%EB%B0%A9%EC%8B%9D%EC%9C%BC%EB%A1%9C-%EA%B0%9C%EB%B0%9C%ED%95%9C-%EC%82%AC%EB%A1%80%EA%B0%80-%EC%9E%88%EB%8B%A4%EB%A9%B4-%EB%B3%B8%EC%9D%B8%EC%9D%B4-%EB%8A%90%EB%81%BC%EB%8A%94-%EC%9E%A5%EB%8B%A8%EC%A0%90%EC%9D%84-%EC%84%A4%EB%AA%85%ED%95%98%EA%B8%B0)
+    
+    - [ ] [크롬개발자도구에서 js디버깅을 하는 방식을 설명해보기.](#%ED%81%AC%EB%A1%AC%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%8F%84%EA%B5%AC%EC%97%90%EC%84%9C-js%EB%94%94%EB%B2%84%EA%B9%85%EC%9D%84-%ED%95%98%EB%8A%94-%EB%B0%A9%EC%8B%9D%EC%9D%84-%EC%84%A4%EB%AA%85%ED%95%B4%EB%B3%B4%EA%B8%B0)
+    
+    - [ ] [비동기 콜백함수와 스택간의 관계를 어떻게 설명할 수 있는지?](#%EB%B9%84%EB%8F%99%EA%B8%B0-%EC%BD%9C%EB%B0%B1%ED%95%A8%EC%88%98%EC%99%80-%EC%8A%A4%ED%83%9D%EA%B0%84%EC%9D%98-%EA%B4%80%EA%B3%84%EB%A5%BC-%EC%96%B4%EB%96%BB%EA%B2%8C-%EC%84%A4%EB%AA%85%ED%95%A0-%EC%88%98-%EC%9E%88%EB%8A%94%EC%A7%80)
+    
+    - [ ] [DOM 조작과정에서 성능에 좋지 않은 방식과 좋은 사례는 어떤 것들이 있는지?](#dom-%EC%A1%B0%EC%9E%91%EA%B3%BC%EC%A0%95%EC%97%90%EC%84%9C-%EC%84%B1%EB%8A%A5%EC%97%90-%EC%A2%8B%EC%A7%80-%EC%95%8A%EC%9D%80-%EB%B0%A9%EC%8B%9D%EA%B3%BC-%EC%A2%8B%EC%9D%80-%EC%82%AC%EB%A1%80%EB%8A%94-%EC%96%B4%EB%96%A4-%EA%B2%83%EB%93%A4%EC%9D%B4-%EC%9E%88%EB%8A%94%EC%A7%80)
+        
     - [배열에서 제공하는 메서드 중에 filter와 map의 활용경험은?](#%EB%B0%B0%EC%97%B4%EC%97%90%EC%84%9C-%EC%A0%9C%EA%B3%B5%ED%95%98%EB%8A%94-%EB%A9%94%EC%84%9C%EB%93%9C-%EC%A4%91%EC%97%90-filter%EC%99%80-map%EC%9D%98-%ED%99%9C%EC%9A%A9%EA%B2%BD%ED%97%98%EC%9D%80)
     - [prototype 이 가진 장점은 무엇인가?](#prototype-%EC%9D%B4-%EA%B0%80%EC%A7%84-%EC%9E%A5%EC%A0%90%EC%9D%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80)
     - [prototype 을 통해 객체를 만드는 방법에 대해서 설명하기.](#prototype-%EC%9D%84-%ED%86%B5%ED%95%B4-%EA%B0%9D%EC%B2%B4%EB%A5%BC-%EB%A7%8C%EB%93%9C%EB%8A%94-%EB%B0%A9%EB%B2%95%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C-%EC%84%A4%EB%AA%85%ED%95%98%EA%B8%B0)
@@ -285,7 +281,14 @@ const는 타 언어에서 상수로 사용되는 변수 타입이다. 실제로 
 
 ---
 ### 비동기 콜백함수와 스택간의 관계를 어떻게 설명할 수 있는지?
+한줄요약 : 비동기 콜백함수가 호출되면 이벤트큐에 쌓았다가, 스택을 다 실행하면 이벤트큐를 실행한다.
+
 비동기 콜백함수는 싱글 스레드 환경인 자바 스크립트에서 효율적인 코딩을 가능하게 한다. 자바스크립트는 싱글 스레드 환경이므로 하나의 콜스택을 가지게 되는데, 먼저 메인 컨텍스트가 호출되고 메인 함수 내부 함수들이 스택에 쌓이고 빠져나가면서 실행되어진다. 이때 콜백 함수를 호출하는 함수는 콜 스택에 쌓였다가 콜백함수를 web API에 등록하게 되며, 이 때 시간이 지나거나 response 요청을 받는등의 특정한 조건 후에 task queue(event queue)로 들어가게 된다. 모든 함수가 실행되고 콜스택이 비어있을때 task queue에 가장 첫번째 쌓인 콜백 함수부터 스택에 쌓이고 실행되며 task queue가 빌때까지 반복된다.
+참고 : 함수가 다른 함수를 인자를 전달하여 실행하는 것을 실행하는 것을 의미한다.
+
+참고사이트 : [what the heck is the event loop anyway?](https://www.youtube.com/watch?v=8aGhZQkoFbQ&t=578s)
+참고사이트 : [자바스크립트의 콜백함수 이해하기](http://yubylab.tistory.com/entry/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EC%9D%98-%EC%BD%9C%EB%B0%B1%ED%95%A8%EC%88%98-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0)
+참고사이트 : 
 
 ---
 ### DOM 조작과정에서 성능에 좋지 않은 방식과 좋은 사례는 어떤 것들이 있는지?
@@ -817,4 +820,5 @@ git의 가장 강력한 기능중의 하나로 예전의 상태로 돌아가는 
    2. [DailyEngineering blog](https://hyunseob.github.io/) 
    3. [Unikys blog](http://unikys.tistory.com/)
    4. [yubylab blog](http://yubylab.tistory.com/) 
-   5. [jui blog](http://blog.jui.io/)
+   5. [jui blog](http://blog.jui.io/) 
+   6. [what the heck is the event loop anyway?](https://www.youtube.com/watch?v=8aGhZQkoFbQ&t=578s)
