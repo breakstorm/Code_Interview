@@ -85,7 +85,11 @@
     - [front-end 개발자의 역할은 어디까지 일까?](#front-end-%EA%B0%9C%EB%B0%9C%EC%9E%90%EC%9D%98-%EC%97%AD%ED%95%A0%EC%9D%80-%EC%96%B4%EB%94%94%EA%B9%8C%EC%A7%80-%EC%9D%BC%EA%B9%8C)
     - [nodeJS의 설치방법과 모듈화를 통한 웹서버 라우팅을 구현할 수 있다.](#nodejs%EC%9D%98-%EC%84%A4%EC%B9%98%EB%B0%A9%EB%B2%95%EA%B3%BC-%EB%AA%A8%EB%93%88%ED%99%94%EB%A5%BC-%ED%86%B5%ED%95%9C-%EC%9B%B9%EC%84%9C%EB%B2%84-%EB%9D%BC%EC%9A%B0%ED%8C%85%EC%9D%84-%EA%B5%AC%ED%98%84%ED%95%A0-%EC%88%98-%EC%9E%88%EB%8B%A4)
 
-# 체크리스트
+- [참조목록](#참조목록)  
+
+
+
+## 체크리스트
 
 ### 자바스크립트 scope를 var키워드를 기준으로 설명할수 있다.
 다른 언어와 다르게 자바스크립트는 유효 범위의 개념이 다르다
@@ -95,7 +99,7 @@
 - 함수 단위의 유효 범위
 - 변수명의 중복 허용
 - var 키워드의 생략
-- 렉시컬 특성
+- 렉시컬 특성 
 
 ##### [예제 1] 함수 단위의 유효 범위
 ```
@@ -807,3 +811,10 @@ git의 가장 강력한 기능중의 하나로 예전의 상태로 돌아가는 
 가능하다.
 
 ---
+
+## 참조목록
+   1. [게으른 개발자 블로그](http://lazydev.tistory.com/)
+   2. [DailyEngineering blog](https://hyunseob.github.io/) 
+   3. [Unikys blog](http://unikys.tistory.com/)
+   4. [yubylab blog](http://yubylab.tistory.com/) 
+   5. [jui blog](http://blog.jui.io/)
